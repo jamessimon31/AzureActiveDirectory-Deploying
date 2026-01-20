@@ -18,7 +18,7 @@ This environment will be reused for future labs (Group Policy, user management, 
 
 ---
 
-## Install Active Directory Domain Services
+# Install Active Directory Domain Services
 
 ### 1. Log in to DC-1
 
@@ -54,7 +54,7 @@ After reboot, log back into DC-1 using: ` company.com\labuser` or `labuser@compa
 
 ---
 
-## Part 2: Create Domain Admin User & OUs
+# Create Domain Admin User & OUs
 
 ### 1. Open Active Directory Users and Computers (ADUC)
 
@@ -99,17 +99,13 @@ Create a new user in the `_ADMINS` OU with the following details:
 
 ### 5. Log in as Domain Admin
 
-Log out of DC-1 and log back in using:
-
-```
-company.com\jane_admin
-```
+Log out of DC-1 and log back in using: `company.com\jane_admin`
 
 ✅ From this point forward, `jane_admin` is used as the primary administrative account.
 
 ---
 
-## Part 3: Join Client-1 to the Domain
+# Join Client-1 to the Domain
 
 ### 1. Verify DNS Settings (Azure)
 
@@ -120,19 +116,11 @@ company.com\jane_admin
 
 ### 2. Join Client-1 to Domain
 
-1. Log in to Client-1 as:
-
-```
-labuser
-```
+1. Log in to Client-1 as: `labuser`
 
 2. Open **System Properties**
 3. Select **Change settings** → **Change**
-4. Choose **Domain** and enter:
-
-```
-company.com
-```
+4. Choose **Domain** and enter: `company.com`
 
 5. Authenticate using: `company.com\jane_admin` or `jane_admin@company.com`
 
@@ -150,13 +138,54 @@ company.com
 
 ### 4. Organize Client Computers
 
-1. Create a new OU named:
-
-```
-_CLIENTS
-```
+1. Create a new OU named: `_CLIENTS`
 
 2. Move **Client-1** into the `_CLIENTS` OU
 
 ---
 
+# Bulk User Creation & Login Testing
+
+This section demonstrates **automated user creation** using PowerShell and validates domain access.
+
+---
+
+### 1. Log in to DC-1
+
+Log in to the Domain Controller as: `company.com\jane_admin`
+
+---
+
+### 2. Open PowerShell ISE
+
+1. Right-click **PowerShell ISE**
+2. Select **Run as Administrator**
+
+---
+
+### 3. Create and Run User Creation Script
+
+1. Create a **new script file** in PowerShell ISE
+2. Paste the provided user-creation script into the file
+3. Run the script
+4. Observe multiple user accounts being created automatically
+
+---
+
+### 4. Verify Users in Active Directory
+
+1. Open **Active Directory Users and Computers (ADUC)**
+2. Navigate to the `_EMPLOYEES` OU
+3. Confirm the new user accounts appear in the correct OU
+
+---
+
+### 5. Test User Login on Client-1
+
+1. Choose one of the newly created users
+2. Log into **Client-1** using: `company.com\<username>`
+
+3. Use the password defined in the script
+4. Confirm successful login via Remote Desktop
+
+---
