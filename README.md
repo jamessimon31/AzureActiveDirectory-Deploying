@@ -166,7 +166,7 @@ Log in to the Domain Controller as: `company.com\jane_admin`
 ### 3. Create and Run User Creation Script
 
 1. Create a **new script file** in PowerShell ISE
-2. Paste the provided user-creation script into the file
+2. Paste the [script](https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1) into the file
 3. Run the script
 4. Observe multiple user accounts being created automatically
 
